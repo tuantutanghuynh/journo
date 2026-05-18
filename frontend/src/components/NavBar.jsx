@@ -20,6 +20,7 @@ export default function Navbar() {
       <div>
         {isLoggedIn ? (
           <>
+            <Link to="/my-posts">My Posts</Link>
             <Link to="/create-post">New Post</Link>
             <button onClick={handleLogout}>Logout</button>
           </>
