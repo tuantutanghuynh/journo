@@ -32,8 +32,10 @@ export default function MyPosts() {
       const myPosts = allPosts.filter((post) => post.author?.id === userId);
 
       setPosts(myPosts);
+
     } catch (err) {
       setError("Failed to load your posts. Please login first.");
+
     } finally {
       setLoading(false);
     }
@@ -41,9 +43,7 @@ export default function MyPosts() {
 
   const handleDelete = async (postId) => {
     // ask user to confirm before deleting
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this post?",
-    );
+    const confirmed = window.confirm("Are you sure you want to delete this post?");
 
     if (!confirmed) return;
 
@@ -53,6 +53,7 @@ export default function MyPosts() {
 
       // remove deleted post from list without reloading
       setPosts(posts.filter((post) => post.id !== postId));
+
     } catch (err) {
       alert("Failed to delete post.");
     }
@@ -66,9 +67,7 @@ export default function MyPosts() {
       <h1>My Posts</h1>
 
       {posts.length === 0 ? (
-        <p>
-          You have no posts yet. <Link to="/create-post">Create one!</Link>
-        </p>
+        <p>You have no posts yet. <Link to="/create-post">Create one!</Link></p>
       ) : (
         posts.map((post) => (
           <div key={post.id}>
